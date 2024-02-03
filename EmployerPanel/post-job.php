@@ -48,7 +48,7 @@
                 <div class="" style="width: 14rem;">
                     <label for="city" class="form-label">City</label>
                     <select class="form-select" name="city" required="">
-                        <option value="">Choose...</option>
+                        <option value="">Select</option>
                         <option value="Dhaka">Dhaka</option>
                         <option value="Sylhet">Sylhet</option>
                         <option value="Khulna">Khulna</option>
@@ -73,7 +73,29 @@
 
                 <div class="">
                     <label for="employmentDuration">Duration of Employment</label>
-                    <input type="text" class="form-control" id="employmentDuration" name="employmentDuration" required>
+                    <input type="date" class="form-control" id="employmentDuration" name="employmentDuration" required>
+                </div>
+                
+            </div>
+            <!-- <div class="d-flex gap-5 mt-4">
+                <div class="">
+                    <label for="companyName">Company Name</label>
+                    <input type="text" class="form-control" id="companyName" name="companyName" required>
+                </div>
+
+                <div class="">
+                    <label for="category">Category</label>
+                    <input type="text" class="form-control" id="category" name="category" required>
+                </div>
+            </div> -->
+            <div class="d-flex gap-5 mt-4">
+                <div class="" style="width: 14rem;">
+                    <label for="jobtype" class="form-label">Job Type</label>
+                    <select class="form-select" name="jobtype" required="">
+                        <option value="">Select</option>
+                        <option value="full-time">Full-Time</option>
+                        <option value="part-time">Part-Time</option>
+                    </select>
                 </div>
             </div>
 
