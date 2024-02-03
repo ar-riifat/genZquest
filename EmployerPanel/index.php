@@ -1,25 +1,13 @@
 <!doctype html>
 <html lang="en">
-<?php 
-include 'settings.php'; 
-include 'check-login.php';
 
-if ($user_online == "true") {
-if ($myrole == "employer") {
-}else{
-header("location:../");		
-}
-}else{
-header("location:../");	
-}
-?>
 <head>
 
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Nightingale Jobs - Change Password</title>
+	<title>Company Profile</title>
 	<meta name="description" content="Online Job Management / Job Portal" />
 	<meta name="keywords" content="job, work, resume, applicants, application, employee, employer, hire, hiring, human resource management, hr, online job management, company, worker, career, recruiting, recruitment" />
 	<meta name="author" content="BwireSoft">
@@ -125,8 +113,7 @@ header("location:../");
 				<div class="container">
 				
 					<ol class="breadcrumb-list booking-step">
-						<li><a href="../">Bwire Jobs</a></li>
-						<li><span>Change Password</span></li>
+						<li><span>Profile</span></li>
 					</ol>
 					
 				</div>
@@ -150,16 +137,10 @@ header("location:../");
 									<div class="admin-user-item for-employer">
 										
 										<div class="image">
-										<?php 
-										if ($logo == null) {
-										print '<center>Company Logo Here</center>';
-										}else{
-										echo '<center><img alt="image" title="'.$compname.'" width="180" height="100" src="data:image/jpeg;base64,'.base64_encode($logo).'"/></center>';	
-										}
-										?><br>
+										<br>
 										</div>
 										
-										<h4><?php echo "$compname"; ?></h4>
+										<h4></h4>
 										
 									</div>
 									
@@ -170,10 +151,10 @@ header("location:../");
 									</div>
 									
 									<ul class="admin-user-menu clearfix">
-										<li  class="">
+										<li  class="active">
 											<a href="./"><i class="fa fa-user"></i> Profile</a>
 										</li>
-										<li class="active">
+										<li class="">
 										<a href="change-password.php"><i class="fa fa-key"></i> Change Password</a>
 										</li>
 			
@@ -198,20 +179,71 @@ header("location:../");
 
 									<div class="admin-section-title">
 									
-										<h2>Change Password</h2>
+										<h2>Profile</h2>
 										
 									</div>
 									
-									<form name="frm" class="post-form-wrapper" action="app/new-pass.php" method="POST">
+									<form class="post-form-wrapper" action="app/update-profile.php" method="POST" autocomplete="off">
 								
 											<div class="row gap-20">
-                                             <?php include 'constants/check_reply.php'; ?>
+												 <!-- include 'constants/check_reply.php';  -->
+												<div class="clear"></div>
+												
+												<div class="col-sm-12 col-md-8">
+												
+													<div class="form-group">
+														<label>Company Name</label>
+														<input name="company" placeholder="Enter company name" type="text" class="form-control" value="" required>
+													</div>
+													
+												</div>
+												<div class="clear"></div>
 												
 												<div class="col-sm-6 col-md-4">
 												
 													<div class="form-group">
-														<label>New Password</label>
-														<input type="password" class="form-control" name="password" required placeholder="Enter your new password">
+														<label>Established In</label>
+                                                    <input name="year" placeholder="Enter year eg: 2024" type="text" class="form-control" value="" required>
+													</div>
+													
+												</div>
+												
+												<div class="col-sm-6 col-md-4">
+												
+													<div class="form-group">
+														<label>Type</label>
+                                                    <input class="form-control" placeholder="Eg: Booking, Travel" name="type" required type="text" value="" required> 
+													</div>
+													
+												</div>
+												
+												<div class="clear"></div>
+
+												<div class="form-group">
+
+													<div class="col-sm-6 col-md-4">
+														<label>Website</label>
+														<input type="text" class="form-control" value="" name="web" placeholder="Enter your website">
+													</div>
+														
+												</div>
+												
+												<div class="clear"></div>
+												
+												<div class="col-sm-6 col-md-4">
+												
+													<div class="form-group">
+														<label>City/town</label>
+														<input name="city" required type="text" class="form-control" value="" placeholder="Enter your city">
+													</div>
+													
+												</div>
+												
+												<div class="col-sm-6 col-md-4">
+												
+													<div class="form-group">
+														<label>Street</label>
+														<input name="street" required type="text" class="form-control" value="" placeholder="Enter your street">
 													</div>
 													
 												</div>
@@ -221,21 +253,109 @@ header("location:../");
 												<div class="col-sm-6 col-md-4">
 												
 													<div class="form-group">
-														<label>Confirm Password</label>
-														<input type="password" class="form-control"  name="confirmpassword" required placeholder="Confirm your new password">
+														<label>Zip Code</label>
+														<input name="zip" required type="text" class="form-control" value="" placeholder="Enter your zip">
 													</div>
 													
 												</div>
 												
+
+
+												<div class="clear"></div>
+												
+												<div class="col-sm-6 col-md-4">
+												
+													<div class="form-group">
+														<label>Phone Number</label>
+														<input type="text" name="phone" required class="form-control" value="" placeholder="Enter your phone">
+													</div>
+													
+												</div>
+												
+												<div class="col-sm-6 col-md-4">
+												
+													<div class="form-group">
+														<label>Email Address</label>
+														<input type="email" name="email" required class="form-control" value="" placeholder="Enter your email">
+													</div>
+													
+												</div>
+												
+
+
+												<div class="clear"></div>
+												
+
+
+												<div class="clear"></div>
+												
+												<div class="col-sm-12 col-md-12">
+												
+													<div class="form-group bootstrap3-wysihtml5-wrapper">
+														<label>Company background</label>
+														<textarea name="background" class="bootstrap3-wysihtml5 form-control" placeholder="Enter company background ..." style="height: 200px;"></textarea>
+													</div>
+													
+												</div>
+												
+												<div class="clear"></div>
+												
+												<div class="col-sm-12 col-md-12">
+												
+													<div class="form-group bootstrap3-wysihtml5-wrapper">
+														<label>Services</label>
+														<textarea name="services" class="bootstrap3-wysihtml5 form-control" placeholder="Enter company services ..." style="height: 200px;"></textarea>
+													</div>
+													
+												</div>
+												
+												<div class="clear"></div>
+												
+												<div class="col-sm-12 col-md-12">
+												
+													<div class="form-group bootstrap3-wysihtml5-wrapper">
+														<label>Expertise</label>
+														<textarea name="expertise" class="bootstrap3-wysihtml5 form-control" placeholder="Enter company expertise ..." style="height: 200px;"></textarea>
+													</div>
+													
+												</div>
+												
+												<div class="clear"></div>
+
 												<div class="col-sm-12 mt-10">
-													<button type="submit" onclick="return check_passwords();" class="btn btn-primary">Update</button>
-													<button type="reset" class="btn btn-primary btn-inverse">Cancel</a>
+													<button type="submit" class="btn btn-primary">Save</button>
+													<button type="reset" class="btn btn-warning">Cancel</button>
 												</div>
 
 											</div>
 											
 										</form><br>
 										
+										<form action="app/new-dp.php" method="POST" enctype="multipart/form-data">
+										<div class="row gap-20">
+										<div class="col-sm-12 col-md-12">
+												
+										<div class="form-group bootstrap3-wysihtml5-wrapper">
+										<label>Company Logo</label>
+										<input accept="image/*" type="file" name="image"  required >
+										</div>
+													
+										</div>
+												
+										<div class="clear"></div>
+
+										<div class="col-sm-12 mt-10">
+										<button type="submit" class="btn btn-primary">Update</button>
+										<?php 
+										if ($logo == null) {
+
+										}else{
+										?><a onclick = "return confirm('Are you sure you want to delete your logo ?')" class="btn btn-primary btn-inverse" href="app/drop-dp.php">Delete</a> <?php
+										}
+										?>
+										</div>
+										</div>
+										</form>
 									
 								</div>
 
@@ -249,54 +369,6 @@ header("location:../");
 			
 			</div>
 
-			<footer class="footer-wrapper">
-			
-				<div class="main-footer">
-				
-					<div class="container">
-					
-						<div class="row">
-						
-							<div class="col-sm-12 col-md-9">
-							
-								<div class="row">
-								
-
-									
-									<div class="col-sm-6 col-md-5 mt-30-xs">
-										<h5 class="footer-title">Quick Links</h5>
-										<ul class="footer-menu clearfix">
-											<li><a href="../">Home</a></li>
-											<li><a href="../job-list.php">Job List</a></li>
-											<li><a href="../employers.php">Employers</a></li>
-											<li><a href="../employees.php">Employees</a></li>
-											<li><a href="../contact.php">Contact Us</a></li>
-											<li><a href="#">Go to top</a></li>
-
-										</ul>
-									
-									</div>
-
-								</div>
-
-							</div>
-							
-
-
-							
-						</div>
-						
-					</div>
-					
-				</div>
-				
-
-
-					</div>
-					
-				</div>
-			
-			</footer>
 			
 		</div>
 
@@ -307,36 +379,6 @@ header("location:../");
 <div id="back-to-top">
    <a href="#"><i class="ion-ios-arrow-up"></i></a>
 </div>
-
-<script type="text/javascript">
-function check_passwords(){
-if(frm.password.value == "")
-{
-	alert("Enter the Password.");
-	frm.password.focus(); 
-	return false;
-}
-if((frm.password.value).length < 8)
-{
-	alert("Password should be minimum 8 characters.");
-	frm.password.focus();
-	return false;
-}
-
-if(frm.confirmpassword.value == "")
-{
-	alert("Enter the Confirmation Password.");
-	return false;
-}
-if(frm.confirmpassword.value != frm.password.value)
-{
-	alert("Password confirmation does not match.");
-	return false;
-}
-
-return true;
-}
-</script>
 
 
 <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
