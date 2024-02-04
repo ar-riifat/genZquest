@@ -16,21 +16,32 @@
 
 <body>
 
-<?php require('header.php'); ?>
+    <?php require('header.php'); ?>
 
-
-
-         <div class="col-lg-9">
-                <div class="container d-flex justify-content-center mt-5">
-                 
-                    <form id="postJobAction.php" METHOD="POST">
+    <div class="container d-flex justify-content-center mt-5">
+        <form action="postJobAction.php" method="POST">
             <div>
                 <h2 class="mb-4">Post a Job</h2>
             </div>
-            <div class="col-12 form-group">
+            <div class="form-group">
                 <label for="title">Job Title</label>
-                <input type="text" class="form-control" id="title" name="title" required>
+                <input type="text" class="form-control" id="title" name="jobTitle" required>
             </div>
+
+
+            <div class="d-flex gap-5 mt-4">
+                <div class="">
+                    <label for="JOBID">Job Id</label>
+                    <input type="number" class="form-control" id="JOBID" name="JOBID" required>
+                </div>
+
+                <div class="">
+                    <label for="JOBSTATUS">Job Status</label>
+                    <input type="text" class="form-control" id="JOBSTATUS" name="JOBSTATUS" required>
+                </div>
+            </div>
+
+
 
             <div class="d-flex gap-5 mt-4">
                 <div class="">
@@ -48,7 +59,7 @@
                 <div class="" style="width: 14rem;">
                     <label for="city" class="form-label">City</label>
                     <select class="form-select" name="city" required="">
-                        <option value="">Select</option>
+                        <option value="">Choose...</option>
                         <option value="Dhaka">Dhaka</option>
                         <option value="Sylhet">Sylhet</option>
                         <option value="Khulna">Khulna</option>
@@ -73,45 +84,20 @@
 
                 <div class="">
                     <label for="employmentDuration">Duration of Employment</label>
-                    <input type="date" class="form-control" id="employmentDuration" name="employmentDuration" required>
-                </div>
-                
-            </div>
-            <!-- <div class="d-flex gap-5 mt-4">
-                <div class="">
-                    <label for="companyName">Company Name</label>
-                    <input type="text" class="form-control" id="companyName" name="companyName" required>
-                </div>
-
-                <div class="">
-                    <label for="category">Category</label>
-                    <input type="text" class="form-control" id="category" name="category" required>
-                </div>
-            </div> -->
-            <div class="d-flex gap-5 mt-4">
-                <div class="" style="width: 14rem;">
-                    <label for="jobtype" class="form-label">Job Type</label>
-                    <select class="form-select" name="jobtype" required="">
-                        <option value="">Select</option>
-                        <option value="full-time">Full-Time</option>
-                        <option value="part-time">Part-Time</option>
-                    </select>
+                    <input type="text" class="form-control" id="employmentDuration" name="employmentDuration" required>
                 </div>
             </div>
 
             <div class="mt-4 form-floating">
-                <textarea class="form-control" placeholder="Job Description" id="jobDescription" style="height: 100px"></textarea>
+                <textarea class="form-control" placeholder="Job Description" id="jobDescription" style="height: 100px"
+                    name="jobDescription"></textarea>
                 <label for="jobDescription">Job Description</label>
             </div>
 
             <div class="mt-4 form-floating">
-                <textarea class="form-control" placeholder="Qualifications" id="qualifications" style="height: 100px"></textarea>
+                <textarea class="form-control" placeholder="Qualifications" id="qualifications" style="height: 100px"
+                    name="qualifications"></textarea>
                 <label for="qualifications">Qualifications</label>
-            </div>
-
-            <div class="mt-4 form-floating">
-                <textarea class="form-control" placeholder="Additional Information" id="additionalInformation" style="height: 100px"></textarea>
-                <label for="additionalInformation">Additional Information</label>
             </div>
 
             <button type="submit" class="btn btn-primary mt-4">Post Job</button>
@@ -123,5 +109,4 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>
-
 </html>
