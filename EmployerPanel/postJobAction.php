@@ -3,26 +3,33 @@
 include '../config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $title = $_POST['title'];
+    // Get form data
+    $jobTitle = $_POST['jobTitle'];
+    $JOBID = $_POST['JOBID'];
+    $JOBSTATUS= $_POST['JOBSTATUS'];
     $companyName = $_POST['companyName'];
     $category = $_POST['category'];
-    $city = $_POST['city'];
-    $country = $_POST['country'];
-    $workExperience = $_POST['workExperience'];
-    $employmentDuration = $_POST['employmentDuration'];
-    $jobtype = $_POST['job-type'];
-    $description = $_POST['description'];
-    $qualification = $_POST['qualification'];
+    $workExperience= $_POST["workExperience"];
+    $employmentDuration = $_POST["employmentDuration"];
+    $jobDescription = $_POST["jobDescription "];
+    $qualifications = $_POST["qualifications"];
+   
 
-    $insertQuery = "INSERT INTO `job-post`(`job-title`, `company-name`, `category`, `city`, `country`, `experience`, `duration`, `job-type`, `description`, `qualification`) 
-                    VALUES ('$title','$companyName','$category','$city','$country','$workExperience','$employmentDuration','$jobtype','$description','$qualification')";
+    // SQL query to insert data into the database (without password hashing)
+    $insertQuery = "INSERT INTO `job`(`JOBTITLE`,`JOBID`,`JOBSTATUS`,`COMPANYNAME`, `CATEGORY`, `WORK_EXPERIENCE`, `DURATION_EMPLOYMENT`, `JOBDESCRIPTION`, `QUALIFICATION`) 
+                    VALUES ('$jobTitle','$JOBID','$JOBSTATUS','$companyName','$category','$workExperience','$employmentDuration','$jobDescription',
+                    '$qualifications')";
 
-    if (!mysqli_query($conn, $insertQuery)) {
-        echo "<script>alert('Not Inserted!!')</script>";
-        echo "<script>location.href = 'post-job.php'</script>";
-    } else {
-        echo "<script>alert('Information Updated Failed!!')</script>";
-        echo "<script>location.href='post-job.php'</script>";
-    }
+// Execute the query
+$result = mysqli_query($conn, $insertQuery);
+
+if ($result) {
+    echo "Data inserted successfully!";
+} else {
+    echo "Error: " . mysqli_error($conn);
 }
+}
+
+// Close the database connection
+mysqli_close($conn);
 ?>
