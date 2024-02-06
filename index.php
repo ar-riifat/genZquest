@@ -6,7 +6,6 @@ if (!isset($_SESSION['username'])) {
     echo "<script>alert('Please login first!')</script>";
     echo "<script>location.href='login.php'</script>";
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -133,7 +132,7 @@ if (!isset($_SESSION['username'])) {
 
                     <br>
                     <?php
-                    // Fetch the job listings based on user preferences
+                    // Fetch the job listings based on miscell
                     $sql = "SELECT * FROM `company` c, `job` j, `registration` r 
                         WHERE c.`COMPANYID` = j.`COMPANYID` 
                         ORDER BY r.`miscell` = j.`keyword` DESC, DATEPOSTED DESC 

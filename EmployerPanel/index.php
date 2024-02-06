@@ -22,10 +22,8 @@
 
 	<link rel="shortcut icon" href="../images/ico/favicon.png">
 
-	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css" media="screen">	
-	<link href="../css/animate.css" rel="stylesheet">
-	<link href="../css/main.css" rel="stylesheet">
-	<link href="../css/component.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 	
 	<link rel="stylesheet" href="../icons/linearicons/style.css">
 	<link rel="stylesheet" href="../icons/font-awesome/css/font-awesome.min.css">
@@ -46,65 +44,6 @@
 <body class="not-transparent-header">
 
 	<div class="container-wrapper">
-
-		<header id="header">
-
-			<nav class="navbar navbar-default navbar-fixed-top navbar-sticky-function">
-
-				<div class="container">
-					
-					<div class="logo-wrapper">
-						<div class="logo">
-							<a href="../"><img src="../images/logo.png" alt="Logo" /></a>
-						</div>
-					</div>
-					
-					<div id="navbar" class="navbar-nav-wrapper navbar-arrow">
-					
-						<ul class="nav navbar-nav" id="responsive-menu">
-						
-							<li>
-							
-								<a href="../">Home</a>
-								
-							</li>
-							
-							<li>
-								<a href="../job-list.php">Job List</a>
-
-							</li>
-							
-							<li>
-								<a href="../employers.php">Employers</a>
-							</li>
-							
-							<li>
-								<a href="../employees.php">Employees</a>
-							</li>
-							
-							<li>
-								<a href="../contact.php">Contact Us</a>
-							</li>
-
-						</ul>
-				
-					</div>
-
-					<div class="nav-mini-wrapper">
-						<ul class="nav-mini sign-in">
-							<li><a href="../logout.php">logout</a></li>
-							<li><a href="./">Profile</a></li>
-						</ul>
-					</div>
-				
-				</div>
-				
-				<div id="slicknav-mobile"></div>
-				
-			</nav>
-
-			
-		</header>
 
 		<div class="main-wrapper">
 		
@@ -172,194 +111,101 @@
 								</div>
 
 							</div>
-							
-							<div class="GridLex-col-9_sm-8_xs-12">
-							
-								<div class="admin-content-wrapper">
-
-									<div class="admin-section-title">
-									
-										<h2>Profile</h2>
-										
-									</div>
-									
-									<form class="post-form-wrapper" action="app/update-profile.php" method="POST" autocomplete="off">
-								
-											<div class="row gap-20">
-												 <!-- include 'constants/check_reply.php';  -->
-												<div class="clear"></div>
-												
-												<div class="col-sm-12 col-md-8">
-												
-													<div class="form-group">
-														<label>Company Name</label>
-														<input name="company" placeholder="Enter company name" type="text" class="form-control" value="" required>
-													</div>
-													
-												</div>
-												<div class="clear"></div>
-												
-												<div class="col-sm-6 col-md-4">
-												
-													<div class="form-group">
-														<label>Established In</label>
-                                                    <input name="year" placeholder="Enter year eg: 2024" type="text" class="form-control" value="" required>
-													</div>
-													
-												</div>
-												
-												<div class="col-sm-6 col-md-4">
-												
-													<div class="form-group">
-														<label>Type</label>
-                                                    <input class="form-control" placeholder="Eg: Booking, Travel" name="type" required type="text" value="" required> 
-													</div>
-													
-												</div>
-												
-												<div class="clear"></div>
-
-												<div class="form-group">
-
-													<div class="col-sm-6 col-md-4">
-														<label>Website</label>
-														<input type="text" class="form-control" value="" name="web" placeholder="Enter your website">
-													</div>
-														
-												</div>
-												
-												<div class="clear"></div>
-												
-												<div class="col-sm-6 col-md-4">
-												
-													<div class="form-group">
-														<label>City/town</label>
-														<input name="city" required type="text" class="form-control" value="" placeholder="Enter your city">
-													</div>
-													
-												</div>
-												
-												<div class="col-sm-6 col-md-4">
-												
-													<div class="form-group">
-														<label>Street</label>
-														<input name="street" required type="text" class="form-control" value="" placeholder="Enter your street">
-													</div>
-													
-												</div>
-												
-												<div class="clear"></div>
-												
-												<div class="col-sm-6 col-md-4">
-												
-													<div class="form-group">
-														<label>Zip Code</label>
-														<input name="zip" required type="text" class="form-control" value="" placeholder="Enter your zip">
-													</div>
-													
-												</div>
-												
 
 
-												<div class="clear"></div>
-												
-												<div class="col-sm-6 col-md-4">
-												
-													<div class="form-group">
-														<label>Phone Number</label>
-														<input type="text" name="phone" required class="form-control" value="" placeholder="Enter your phone">
-													</div>
-													
-												</div>
-												
-												<div class="col-sm-6 col-md-4">
-												
-													<div class="form-group">
-														<label>Email Address</label>
-														<input type="email" name="email" required class="form-control" value="" placeholder="Enter your email">
-													</div>
-													
-												</div>
-												
+
+    <div class="container d-flex justify-content-center mt-5">
+        <form action="postJobAction.php" method="POST">
+            <div>
+                <h2 class="mb-4">Post a Job</h2>
+            </div>
+            <div class="form-group">
+                <label for="title">Job Title</label>
+                <input type="text" class="form-control" id="title" name="jobTitle" required>
+            </div>
 
 
-												<div class="clear"></div>
-												
+            <div class="d-flex gap-5 mt-4">
+                <div class="">
+                    <label for="JOBID">Job Id</label>
+                    <input type="number" class="form-control" id="JOBID" name="JOBID" required>
+                </div>
+
+                <div class="">
+                    <label for="JOBSTATUS">Job Status</label>
+                    <input type="text" class="form-control" id="JOBSTATUS" name="JOBSTATUS" required>
+                </div>
+            </div>
 
 
-												<div class="clear"></div>
-												
-												<div class="col-sm-12 col-md-12">
-												
-													<div class="form-group bootstrap3-wysihtml5-wrapper">
-														<label>Company background</label>
-														<textarea name="background" class="bootstrap3-wysihtml5 form-control" placeholder="Enter company background ..." style="height: 200px;"></textarea>
-													</div>
-													
-												</div>
-												
-												<div class="clear"></div>
-												
-												<div class="col-sm-12 col-md-12">
-												
-													<div class="form-group bootstrap3-wysihtml5-wrapper">
-														<label>Services</label>
-														<textarea name="services" class="bootstrap3-wysihtml5 form-control" placeholder="Enter company services ..." style="height: 200px;"></textarea>
-													</div>
-													
-												</div>
-												
-												<div class="clear"></div>
-												
-												<div class="col-sm-12 col-md-12">
-												
-													<div class="form-group bootstrap3-wysihtml5-wrapper">
-														<label>Expertise</label>
-														<textarea name="expertise" class="bootstrap3-wysihtml5 form-control" placeholder="Enter company expertise ..." style="height: 200px;"></textarea>
-													</div>
-													
-												</div>
-												
-												<div class="clear"></div>
 
-												<div class="col-sm-12 mt-10">
-													<button type="submit" class="btn btn-primary">Save</button>
-													<button type="reset" class="btn btn-warning">Cancel</button>
-												</div>
+            <div class="d-flex gap-5 mt-4">
+                <div class="">
+                    <label for="companyName">Company Name</label>
+                    <input type="text" class="form-control" id="companyName" name="companyName" required>
+                </div>
 
-											</div>
-											
-										</form><br>
-										
-										<form action="app/new-dp.php" method="POST" enctype="multipart/form-data">
-										<div class="row gap-20">
-										<div class="col-sm-12 col-md-12">
-												
-										<div class="form-group bootstrap3-wysihtml5-wrapper">
-										<label>Company Logo</label>
-										<input accept="image/*" type="file" name="image"  required >
-										</div>
-													
-										</div>
-												
-										<div class="clear"></div>
+                <div class="">
+                    <label for="category">Category</label>
+                    <input type="text" class="form-control" id="category" name="category" required>
+                </div>
+            </div>
 
-										<div class="col-sm-12 mt-10">
-										<button type="submit" class="btn btn-primary">Update</button>
-										<?php 
-										if ($logo == null) {
+            <div class="d-flex gap-5 mt-4">
+                <div class="" style="width: 14rem;">
+                    <label for="city" class="form-label">City</label>
+                    <select class="form-select" name="city" required="">
+                        <option value="">Choose...</option>
+                        <option value="Dhaka">Dhaka</option>
+                        <option value="Sylhet">Sylhet</option>
+                        <option value="Khulna">Khulna</option>
+                        <option value="Rajshahi">Rajshahi</option>
+                        <option value="Chottogram">Chottogram</option>
+                        <option value="Rangpur">Rangpur</option>
+                        <option value="Barishal">Barishal</option>
+                    </select>
+                </div>
 
-										}else{
-										?><a onclick = "return confirm('Are you sure you want to delete your logo ?')" class="btn btn-primary btn-inverse" href="app/drop-dp.php">Delete</a> <?php
-										}
-										?>
-										</div>
-										</div>
-										</form>
-									
-								</div>
+                <div class="">
+                    <label for="country">Country</label>
+                    <input type="text" class="form-control" id="country" name="country" required>
+                </div>
+            </div>
 
-							</div>
+            <div class="d-flex gap-5 mt-4">
+                <div class="">
+                    <label for="workExperience">Work Experience</label>
+                    <input type="text" class="form-control" id="workExperience" name="workExperience" required>
+                </div>
+
+                <div class="">
+                    <label for="employmentDuration">Duration of Employment</label>
+                    <input type="text" class="form-control" id="employmentDuration" name="employmentDuration" required>
+                </div>
+            </div>
+
+            <div class="mt-4 form-floating">
+                <textarea class="form-control" placeholder="Job Description" id="jobDescription" style="height: 100px"
+                    name="jobDescription"></textarea>
+                <label for="jobDescription">Job Description</label>
+            </div>
+
+            <div class="mt-4 form-floating">
+                <textarea class="form-control" placeholder="Qualifications" id="qualifications" style="height: 100px"
+                    name="qualifications"></textarea>
+                <label for="qualifications">Qualifications</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-4">Post Job</button>
+        </form>
+    </div>
+
+    <!-- Add Bootstrap JS and Popper.js CDN links here if needed -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+
 							
 						</div>
 

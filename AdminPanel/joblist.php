@@ -18,12 +18,12 @@ include '../config.php';
     <title>Joblist</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-        <!-- Fontawesome Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Fontawesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- DataTable -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
-    
+
     <style>
         .sidebar span {
             color: #fff;
@@ -53,7 +53,7 @@ include '../config.php';
                                     <th scope="col" style="width: 15%;">JOBID</th>
                                     <th scope="col" style="width: 20%;">COMPANYID</th>
                                     <th scope="col" style="width: 20%;">CATEGORY</th>
-                                    <th scope="col" style="width: 20%;">OCCUPATIONTITLE</th>
+                                    <th scope="col" style="width: 20%;">JOBTITLE</th>
                                     <th scope="col" style="width: 15%;">JOB STATUS</th>
                                     <th scope="col" style="width: 15%;">DETAILS</th>
 
@@ -71,13 +71,14 @@ include '../config.php';
                                         <th scope='row'>" . $row['JOBID'] . "</th>
                                         <td>" . $row['COMPANYID'] . "</td>
                                         <td>" . $row['CATEGORY'] . "</td>
-                                        <td>" . $row['OCCUPATIONTITLE'] . "</td>
-                                        <td><span class='badge text-bg-" . ($row['status'] == 0 ? "danger" : "success") . "'>" . ($row['status'] == 0 ? " Declined" : "Allowed") . "</span></td>
+                                        <td>" . $row['JOBTITLE'] . "</td>
+                                        <td><span class='badge text-bg-" . ($row['status'] == 0 ? "danger" : "success") . "'>" . ($row['status'] == 0 ? " Closed" : "Active") . "</span></td>
                                         <td>                                            
                                             <div class='d-flex'>
-                                                <a href='edit-job.php?id=" . $row['JOBID'] . "'><button class='btn btn-outline-primary me-3'>Details</button></a>
-                                                <a href='edit-jobAction.php?deleteid=" . $row['JOBID'] . "'><button class='btn btn-outline-danger'> <i class='fa-solid fa-trash-can'></i>
-                                                </button></a>
+                                                <a href='edit-job.php?id=" . $row['JOBID'] . "'><button class='btn btn-outline-primary me-3'><i class='fa-solid fa-pen-to-square'></i></button></a>
+                                                <button type='button' class='btn btn-outline-danger' onclick='openDelete(" . $row['JOBID'] . ")' data-bs-toggle='modal' data-bs-target='#exampleModal'>
+                                                    Delete
+                                                </button>
                                             </div>
                                         </td>
                                     </tr>";
@@ -88,6 +89,27 @@ include '../config.php';
                     </div>
                 </div>
             </div>
+
+            <!-- Delete Form -->
+            <div class="modal fade" id="exampleModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Confirmation</h1>
+                            <span id="id"></span>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are You Sure You Want To Delete?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" onclick="deleteID()">Yes</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <!-- Bootstrap JS and DataTables JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
@@ -102,6 +124,17 @@ include '../config.php';
             $(document).ready(function () {
                 $('#datatable').DataTable();
             })
+
+            var deleterow;
+            function openDelete(row) {
+                deleterow = row;
+                console.log("1");
+                $("#id").text(row);
+            }
+
+            function deleteID() {
+                window.location.href = "edit-jobAction.php?deleteJobid=" + deleterow;
+            }
         </script>
 </body>
 

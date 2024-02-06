@@ -13,10 +13,9 @@
         }
     </style>
 </head>
-
 <body>
 
-    <?php require('header.php'); ?>
+<?php require('header.php'); ?>
 
     <div class="container d-flex justify-content-center mt-5">
         <form action="postJobAction.php" method="POST">
@@ -100,7 +99,7 @@
                 <label for="qualifications">Qualifications</label>
             </div>
 
-            <button type="submit" class="btn btn-primary mt-4">Post Job</button>
+            <button type="submit" class="btn btn-primary mt-4 mb-4">Post Job</button>
         </form>
     </div>
 
