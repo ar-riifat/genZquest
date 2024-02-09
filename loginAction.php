@@ -18,9 +18,9 @@ if (isset($_POST['login'])) {
             $row = mysqli_fetch_assoc($statusQuery);
             // Check if the user is an employer
             if ($row['preference'] === 'employer') {
-                echo "<script>location.href='index.php'</script>";
+                echo "<script>location.href='./EmployerPanel/profile.php'</script>";
             } else {
-                echo "<script>location.href='index.php'</script>";
+                echo "<script>location.href='./EmployerPanel/profile.php'</script>";
             }
         } else {
             $stmt = $conn->prepare("SELECT * FROM `registration` WHERE username=? AND BINARY password=? AND verify_status = '0'");

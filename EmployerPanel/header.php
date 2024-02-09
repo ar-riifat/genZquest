@@ -75,6 +75,29 @@
                         <a class="nav-link me-2" aria-current="page" href="profile.php">Profile</a>
                     </li>
                 </ul>
+                
+                <div class="d-flex">
+                    <div>
+                        <p class="text-body-secondary">admin</p>
+                    </div>
+                    <div class="ms-3 flex-shrink-0 dropdown">
+                        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://avatars.githubusercontent.com/u/124907468?s=400&u=f63e54f365cfe3cd2ebefe1901a554b991537f64&v=4"
+                            alt="profile" width="32" height="32" class="rounded-circle">
+                        </a>
+                        <ul class="dropdown-menu text-small shadow">
+                            <li><a class="dropdown-item" href="profile-admin.php">My Profile</a></li> 
+                            <li>
+                                <hr class="dropdown-divider">
+                            <li><a class="dropdown-item" href="../index.php">Go to Homepage</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="../logout.php">Sign out</a></li>
+                        </ul>
+                    </div>
+                </div>
                     
             </div>   
             
