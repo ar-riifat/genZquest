@@ -76,7 +76,7 @@
                     </li>
                 </ul>
                 
-                <div class="d-flex">
+                <!-- <div class="d-flex">
                     <div>
                         <p class="text-body-secondary">admin</p>
                     </div>
@@ -97,7 +97,7 @@
                             <li><a class="dropdown-item" href="../logout.php">Sign out</a></li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
                     
             </div>   
             

@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,10 +22,10 @@
             <div>
                 <h2 class="mb-4">Profile</h2>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="title">Company Name</label>
                 <input type="text" placeholder="Enter Your Company Name" class="form-control" id="title" name="company" required>
-            </div>
+            </div> -->
 
 
             <div class="d-flex gap-5 mt-4">
@@ -74,69 +67,21 @@
                     <input type="text" placeholder="Bangladesh" class="form-control" id="country" name="country" required>
                 </div>
 
-                <div class="">
+                <!-- <div class="">
                     <label for="mobile">Phone Number</label>
                     <input type="text" placeholder="Enter Your Phone Number" class="form-control" id="mobile" name="mobile" required>
-                </div>
+                </div> -->
             </div>
-            <div class="d-flex gap-5 mt-4">
+            <!-- <div class="d-flex gap-5 mt-4">
                 <div>
                     <label for="email">Email</label>
                     <input type="email" placeholder="Enter Your Email" class="form-control" id="email" name="email" required>
                 </div>
 
-                <!-- <div class="">
-                    <label for="JOBSTATUS">Phone Number</label>
-                    <input type="text" placeholder="Enter Your Phone umber" class="form-control" id="JOBSTATUS" name="JOBSTATUS" required>
-                </div> -->
-            </div>
-
-
-
-            <!-- <div class="d-flex gap-5 mt-4">
-                <div class="">
-                    <label for="companyName">Company Name</label>
-                    <input type="text" class="form-control" id="companyName" name="companyName" required>
-                </div>
-
-                <div class="">
-                    <label for="category">Category</label>
-                    <input type="text" class="form-control" id="category" name="category" required>
-                </div>
             </div> -->
 
-            <!-- <div class="d-flex gap-5 mt-4">
-                <div class="" style="width: 14rem;">
-                    <label for="city" class="form-label">City</label>
-                    <select class="form-select" name="city" required="">
-                        <option value="">Choose...</option>
-                        <option value="Dhaka">Dhaka</option>
-                        <option value="Sylhet">Sylhet</option>
-                        <option value="Khulna">Khulna</option>
-                        <option value="Rajshahi">Rajshahi</option>
-                        <option value="Chottogram">Chottogram</option>
-                        <option value="Rangpur">Rangpur</option>
-                        <option value="Barishal">Barishal</option>
-                    </select>
-                </div>
 
-                <div class="">
-                    <label for="country">Country</label>
-                    <input type="text" class="form-control" id="country" name="country" required>
-                </div>
-            </div> -->
 
-            <!-- <div class="d-flex gap-5 mt-4">
-                <div class="">
-                    <label for="workExperience">Work Experience</label>
-                    <input type="text" class="form-control" id="workExperience" name="workExperience" required>
-                </div>
-
-                <div class="">
-                    <label for="employmentDuration">Duration of Employment</label>
-                    <input type="text" class="form-control" id="employmentDuration" name="employmentDuration" required>
-                </div>
-            </div> -->
 
             <div class="mt-4 form-floating">
                 <textarea class="form-control" placeholder="Company Background" id="about" style="height: 100px"
