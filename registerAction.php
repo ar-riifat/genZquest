@@ -14,7 +14,7 @@ function sendMail($recipient, $username, $verificationToken)
     $mail->SMTPAuth = true; // Enable SMTP authentication
 
     $mail->Host = 'smtp.gmail.com'; // Set the SMTP server to send through
-    $mail->Username = 'fanisurrahmanrifat54@gmail.com'; // SMTP username
+    $mail->Username = 'anisurrahmanrifat54@gmail.com'; // SMTP username
     $mail->Password = 'qbrcecbmvpczlarj'; // SMTP password
 
     $mail->SMTPOptions = array(

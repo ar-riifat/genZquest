@@ -9,34 +9,51 @@
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <style>
         body {
-            background-color: #f8f9fa;
+            background: linear-gradient(90deg, wheat, #8282e7);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 40px;
+        }
+
+        .post-job-heading {
+            color: #6b0c6b;
         }
     </style>
 </head>
-<body>
 
-<?php require('header.php'); ?>
+<body style="width: 100%";>
+
+    <?php include('header.php'); ?>
 
     <div class="container d-flex justify-content-center mt-5">
         <form action="postJobAction.php" method="POST">
             <div>
-                <h2 class="mb-4">Post a Job</h2>
+                <h2 class="mb-4 text-center  post-job-heading">Post a Job</h2>
             </div>
             <div class="form-group">
                 <label for="title">Job Title</label>
-                <input type="text" class="form-control" id="title" name="jobTitle" required>
+                <input type="text" class="form-control" id="title" name="jobTitle" placeholder="Job Title" required>
             </div>
 
 
             <div class="d-flex gap-5 mt-4">
                 <div class="">
-                    <label for="JOBID">Job Id</label>
-                    <input type="number" class="form-control" id="JOBID" name="JOBID" required>
+                    <label for="REQ_NO_EMPLOYEES">Required Employees</label>
+                    <input type="number" class="form-control" id="REQ_NO_EMPLOYEE" name="REQ_NO_EMPLOYEES"
+                        placeholder="Required Employees" required>
                 </div>
 
                 <div class="">
                     <label for="JOBSTATUS">Job Status</label>
-                    <input type="text" class="form-control" id="JOBSTATUS" name="JOBSTATUS" required>
+                    <input type="text" class="form-control" id="JOBSTATUS" name="JOBSTATUS" placeholder="Job Status"
+                        required>
                 </div>
             </div>
 
@@ -45,12 +62,14 @@
             <div class="d-flex gap-5 mt-4">
                 <div class="">
                     <label for="companyName">Company Name</label>
-                    <input type="text" class="form-control" id="companyName" name="companyName" required>
+                    <input type="text" class="form-control" id="companyName" name="companyName"
+                        placeholder="Company Name" required>
                 </div>
 
                 <div class="">
                     <label for="category">Category</label>
-                    <input type="text" class="form-control" id="category" name="category" required>
+                    <input type="text" class="form-control" id="category" name="category" placeholder="Category"
+                        required>
                 </div>
             </div>
 
@@ -71,19 +90,21 @@
 
                 <div class="">
                     <label for="country">Country</label>
-                    <input type="text" class="form-control" id="country" name="country" required>
+                    <input type="text" class="form-control" id="country" name="country" placeholder="Country" required>
                 </div>
             </div>
 
             <div class="d-flex gap-5 mt-4">
                 <div class="">
                     <label for="workExperience">Work Experience</label>
-                    <input type="text" class="form-control" id="workExperience" name="workExperience" required>
+                    <input type="text" class="form-control" id="WorkExperience" name="WorkExperience"
+                        placeholder="work Experience" required>
                 </div>
 
                 <div class="">
                     <label for="employmentDuration">Duration of Employment</label>
-                    <input type="text" class="form-control" id="employmentDuration" name="employmentDuration" required>
+                    <input type="text" class="form-control" id="employmentDuration" name="employmentDuration"
+                        placeholder="Duration Employment" required>
                 </div>
             </div>
 
@@ -99,13 +120,14 @@
                 <label for="qualifications">Qualifications</label>
             </div>
 
-            <button type="submit" class="btn btn-primary mt-4 mb-4">Post Job</button>
+            <button type="submit" class="btn btn-primary mt-4">Post Job</button>
         </form>
     </div>
 
     <!-- Add Bootstrap JS and Popper.js CDN links here if needed -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

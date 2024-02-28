@@ -41,34 +41,43 @@ if (isset($_GET['search'])) {
 <style>
         
 
-        .form-container {
-            width: 50%;
-            padding: 20px;
-            float: left; /* Position on the left side */
-        }
+        
 
         .job-details-container {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 20px;
-            margin: 10px;
-            width: 48%; /* Adjust the width as needed */
-            float: left; /* Position on the left side */
+  
+    width: 50%; /* Adjust the width as needed */
+    float:  right; /* Position on the left side */
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 40px;
+    
+}
+
+.form-container {
+            width: 45%; /* Adjust the width as needed */
             box-sizing: border-box;
+            float: left; 
+            
         }
+
+        
     </style>
 </head>
 <body>
     <?php require('include/header.php'); ?>
 
-    <div class="form-container">
-        <!-- Include the Applicant Form -->
-        <?php include 'form.php'; ?>
-    </div>
+  
 
- 
-       
-        <div class="job-details-container">
+    <section id="content">
+        
+    <div class="form-container">
+                <?php require('applyform.php'); ?>
+            </div>
+   
+        <div class="job-details-container mt-4">
         <h3 class="" style="font-weight: bold;">Job Details</h3>
             <h2><?php echo $row['JOBTITLE']; ?></h2>
             <p>Date Posted: <?php echo date_format(date_create($row['DATEPOSTED']), 'M d, Y'); ?></p>
@@ -77,7 +86,7 @@ if (isset($_GET['search'])) {
             <ul>
                 <li>Required No. of Employees: <?php echo $row['REQ_NO_EMPLOYEES']; ?></li>
                 <li>Salary: <?php echo number_format($row['SALARIES'], 2); ?></li>
-                <li>Duration of Employment: <?php echo $row['DURATION_EMPLOYEMENT']; ?></li>
+                <li>Duration of Employment: <?php echo $row['DURATION_EMPLOYMENT']; ?></li>
               
             </ul>
 
@@ -91,6 +100,8 @@ if (isset($_GET['search'])) {
                 <li><?php echo $row['JOBDESCRIPTION']; ?></li>
             </ul>
             <p>Experience Requirement : <?php echo $row['keyword']; ?></p>
+            <p>Job Status : <?php echo $row['JOBSTATUS']; ?></p>
+
         </div>
     </section>
     
