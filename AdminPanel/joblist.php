@@ -2,7 +2,7 @@
 session_start();
 if (!isset($_SESSION['username'])) {
     echo "<script>alert('Not Accessible!')</script>";
-    echo "<script>location.href='login.php'</script>";
+    echo "<script>location.href='../login.php'</script>";
     exit();
 }
 
@@ -32,7 +32,6 @@ include '../config.php';
 </head>
 
 <body>
-
     <div class="d-flex flex-nowrap">
         <?php include 'sidebar.php' ?>
 
@@ -45,37 +44,42 @@ include '../config.php';
             <div style="flex: 1;">
                 <div class="d-flex row justify-content-center container-fluid">
                     <div class="border-secondary col-lg-12 col-md-12 col-sm-12 rounded m-4">
-                        <h4>List of vacancies</h4>
-                        <br>
+                        <h4 class="mb-4">List of Vacancies <a href="job-add.php" class="btn btn-primary"> <i
+                                    class="fa fa-plus-circle fw-fa"></i> Add Job Vacancy</a></h4>
+                      
                         <table class="table table-striped" id="datatable">
                             <thead>
                                 <tr>
-                                    <th scope="col" style="width: 15%;">JOBID</th>
-                                    <th scope="col" style="width: 20%;">COMPANYID</th>
-                                    <th scope="col" style="width: 20%;">CATEGORY</th>
-                                    <th scope="col" style="width: 20%;">JOBTITLE</th>
+                                    <th scope="col" style="width: 10%;">JOBID</th>
+                                    <th scope="col" style="width: 15%;">CATEGORY</th>
+                                    <th scope="col" style="width: 15%;">JOBTITLE</th>
+                                    <th scope="col" style="width: 20%;">JOB POSTED DATE</th>
                                     <th scope="col" style="width: 15%;">JOB STATUS</th>
                                     <th scope="col" style="width: 15%;">DETAILS</th>
-
-
                                 </tr>
                             </thead>
                             <tbody>
 
                                 <?php
-
                                 $unregistered = mysqli_query($conn, "SELECT * FROM `job`");
                                 while ($row = mysqli_fetch_array($unregistered)) {
                                     echo
                                         "<tr>
                                         <th scope='row'>" . $row['JOBID'] . "</th>
-                                        <td>" . $row['COMPANYID'] . "</td>
                                         <td>" . $row['CATEGORY'] . "</td>
                                         <td>" . $row['JOBTITLE'] . "</td>
+                                        <td><span class='badge bg-secondary'>" . $row['DATEPOSTED'] . "</span></td>
+
+                                        
+
                                         <td><span class='badge text-bg-" . ($row['status'] == 0 ? "danger" : "success") . "'>" . ($row['status'] == 0 ? " Closed" : "Active") . "</span></td>
-                                        <td>                                            
+                                        <td>
+                                        
+                                        
                                             <div class='d-flex'>
                                                 <a href='edit-job.php?id=" . $row['JOBID'] . "'><button class='btn btn-outline-primary me-3'><i class='fa-solid fa-pen-to-square'></i></button></a>
+
+                                                
                                                 <button type='button' class='btn btn-outline-danger' onclick='openDelete(" . $row['JOBID'] . ")' data-bs-toggle='modal' data-bs-target='#exampleModal'>
                                                     Delete
                                                 </button>
@@ -103,14 +107,14 @@ include '../config.php';
                             Are You Sure You Want To Delete?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" onclick="deleteID()">Yes</button>
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+                            <button type="button" class="btn btn-success" onclick="deleteID()">Yes</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
+
         <!-- Bootstrap JS and DataTables JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
@@ -133,7 +137,7 @@ include '../config.php';
             }
 
             function deleteID() {
-                window.location.href = "edit-jobAction.php?deleteJobid=" + deleterow;
+                window.location.href = "adminAction.php?deleteJobid=" + deleterow;
             }
         </script>
 </body>

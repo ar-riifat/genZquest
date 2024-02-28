@@ -68,8 +68,8 @@ $clientcollapse = 1;
             <?php include 'adminheader.php'; ?>
             <div class="d-flex row justify-content-center container-fluid">
                 <div class=" border-secondary col-lg-12 col-md-12 col-sm-12 rounded m-4">
-                    <h4>List of Employers</h4>
-                    <br>
+                    <h4 class="mb-4">List of Employers</h4>
+                    
                     <table class="table table-striped" id="datatable">
                         <thead>
                             <tr>
@@ -85,7 +85,8 @@ $clientcollapse = 1;
                             <?php
 
                             $employerList = mysqli_query($conn, "SELECT * FROM `registration` WHERE `preference`='employer'");
-                            while ($row = mysqli_fetch_array($employerList)) {
+                            while ($row = mysqli_fetch_array($employerList)) 
+                            {
                                 echo
                                     "<tr>
                                             <th scope='row'>" . $row['id'] . "</th>
@@ -101,14 +102,10 @@ $clientcollapse = 1;
                                                     <input type='hidden' name='user_id' value='" . $row['id'] . "'>
                                                     <button type='button' class='btn btn-outline-success me-3'
                                                     onclick='openForm(" . $row['id'] . ")' name='edit'>Edit</button>
-
-                                                    <form method='POST' action='delete.php'>
-                                                    <input type='hidden' name='user_id' value='" . $row['id'] . "'>
-                                                    <button type='button' class='btn btn-outline-danger'
-                                                    onclick='DeleteForm(" . $row['id'] . ")'
-
-                                                     name='delete'>Delete</button>
-                                                </form>
+                                                    
+                                                    <button type='button' class='btn btn-outline-danger' onclick='openDelete(" . $row['id'] . ")' data-bs-toggle='modal' data-bs-target='#exampleModal'>
+                                                        Delete
+                                                    </button>
                             
                                                 </div>
                                             </td>
@@ -121,12 +118,32 @@ $clientcollapse = 1;
             </div>
         </div>
 
+        <!-- Delete Form -->
+        <div class="modal fade" id="exampleModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Confirmation</h1>
+                        <span id="id"></span>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are You Sure You Want To Delete?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" onclick="deleteID()">Yes</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Blurred Background -->
         <div id="blur"></div>
 
         <!-- Edit Form -->
         <div class="editForm col-lg-5" id="editForm">
-            <form action="edit-jobAction.php" METHOD="POST">
+            <form action="adminAction.php" METHOD="POST">
                 <!-- Form Div -->
                 <div class="border border-secondary-subtle shadow-lg rounded">
                     <div class="d-flex justify-content-between">
@@ -257,6 +274,16 @@ $clientcollapse = 1;
 
             blur.style.display = "none";
             editForm.classList.remove("openForm");
+        }
+
+        var deleterow;
+        function openDelete(row) {
+            deleterow = row;
+            $("#id").text(row);
+        }
+
+        function deleteID() {
+            window.location.href = "adminAction.php?deleteuserid=" + deleterow;
         }
     </script>
 </body>

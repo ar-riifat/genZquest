@@ -37,12 +37,11 @@ $row = mysqli_fetch_array($profile);
 <body>
 
 <?php require('header.php'); ?>
-
-
     
 <div class="container d-flex justify-content-center mt-5" >
-            
+
             <form action="profileAction.php" method="POST" enctype="multipart/form-data">
+
             <div>
                 <h2 class="container d-flex justify-content-center mb-5"  >Profile</h2>
             </div>
