@@ -30,6 +30,20 @@ include '../config.php';
         .sidebar span {
             color: #fff;
         }
+
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            border: 1px solid rgba(255, 2, 0, 0, 0.1);
+            border-radius: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(055, 255, 0.3);
+        }
+
+       
+  
     </style>
 </head>
 
@@ -45,17 +59,17 @@ include '../config.php';
                 <div class="border-secondary col-lg-12 col-md-12 col-sm-12 rounded m-4">
                     <h4 class="mb-4">Applicants</h4>
 
-                    <table class="table table-striped" id="datatable">
+                    <table class="container table table-striped" id="datatable">
                         <thead>
                             <tr>
-                                <th scope="col" style="width: 15%;">Profile</th>
+                                <th  scope="col" style="width: 15%;">Profile</th>
                                 <th scope="col" style="width: 10%;">Applicants</th>
                                 <th scope="col" style="width: 15%;">Mobile</th>
                                 <th scope="col" style="width: 20%;">Job Title</th>
                                 <th scope="col" style="width: 15%;">Company </th>
                                 <th scope="col" style="width: 20%;">Applied Date</th>
                                 <th scope="col" style="width: 15%;">Comments</th>
-                                <th scope="col" style="width: 15%;">Application Status</th>
+                                <th scope="col" style="width: 20%;">Application Status</th>
                                 <th scope="col" style="width: 10%;">Action</th>
                             </tr>
                         </thead>
@@ -83,9 +97,7 @@ include '../config.php';
                                 
                                     <td>
                                         <div class='d-flex'>
-                                            <form method='POST' action='applicantDetails.php'>
-                                                <input type='hidden' name='user_id' value='" . $row['id'] . "'>
-                                                <button type='submit' class='btn btn-outline-success me-3' name='see_details'>See Details</button>
+                                        
                                             </form>
                                             <form method='POST' action='delete.php'>
                                                 <input type='hidden' name='user_id' value='" . $row['id'] . "'>

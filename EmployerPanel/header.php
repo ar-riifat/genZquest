@@ -1,14 +1,3 @@
-<?php
-include '../config.php';
-$id = ''; // Initialize $id variable to avoid uninitialized variable warnint in the URL
-if (isset($_GET['id'])) {
-    // Escape the 'id' parameter value for safe use in SQL query
-    $id = mysqli_real_escape_string($conn, $_GET['id']);
-}
-$profile = mysqli_query($conn, "SELECT * FROM registration WHERE id = '$id'");
-$row = mysqli_fetch_array($profile);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,23 +44,19 @@ $row = mysqli_fetch_array($profile);
                         <a class="nav-link active me-2" href="../contact.php">Contact Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active me-2" href="post-job.php">Post Job</a>
-                    </li>
+    <a class="nav-link active me-2" href="applicants.php">
+        <i class="fa-solid fa-circle-check text-success me-1"></i>
+        Confirm Applicants
+    </a>
+</li>
+
                 </ul>
             </div>
-                <div>
-                    <li class="nav-item">
-                        <a class="nav-link active me-2" href="Applicants.php">Confirm Applicants</a>
-                    </li>
-                </div>
-            
-            <div class="ms-2 vr"></div>
-
             
 
             <div class="d-flex">
                 <div>
-                    <p class="text-body-dark"><?php echo $row['firstname']; ?></p>
+                    <p class="text-body-dark">Employer</p>
                 </div>
                 <div class="flex-shrink-0 dropdown position-static">
                     <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"

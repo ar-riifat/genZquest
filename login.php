@@ -21,8 +21,8 @@
 
         #eyeicon {
             position: absolute;
-            right: 35rem;
-            top: 26.5rem;
+            right: 22rem;
+            top: 22rem;
             width: 30px;
             cursor: pointer;
         }

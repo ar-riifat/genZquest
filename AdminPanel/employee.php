@@ -1,8 +1,6 @@
 <?php
 session_start();
 include '../config.php';
-
-
 if (!isset($_SESSION['username'])) {
     echo "<script>alert('Not Accessible!')</script>";
     echo "<script>location.href='login.php'</script>";
@@ -31,8 +29,6 @@ $clientcollapse = 1;
             color: #fff;
         }
 
-        
-        /* Edit Form */
         .editForm {
             position: absolute;
             top: 10%;
@@ -49,7 +45,6 @@ $clientcollapse = 1;
             transform: scale(1);
         }
 
-        /* Blur */
         #blur {
             position: fixed;
             top: 0;
@@ -65,25 +60,29 @@ $clientcollapse = 1;
 
 <body>
     <div class="d-flex flex-row flex-nowrap">
+
         <?php include 'sidebar.php'; ?>
         <div style="width:100%;">
             <?php include 'adminheader.php'; ?>
-            <div class="d-flex row justify-content-center container-fluid">
-                <div class="border-secondary col-lg-12 col-md-12 col-sm-12 rounded m-4">
-                    <h4 class="mb-4">List of Employees</h4>
-                   
-                    <table class="table table-striped" id="datatable">
+
+
+            <div class="d-flex row justify-content-center container-fluid ">
+                <div class="border-secondary col-lg-10 col-md-10 col-sm-10 rounded m-4 ">
+                    <h4 class="mb-4 fw-bold">List of Employees</h4>
+
+                    <table class="border table table-striped" id="datatable">
                         <thead>
                             <tr>
                                 <th scope="col" style="width: 15%;">ID</th>
                                 <th scope="col" style="width: 20%;">Username</th>
-                                <th scope="col" style="width: 20%;">Email</th>
+                                <th scope="col" style="width: 15%;">Email</th>
                                 <th scope="col" style="width: 20%;">Mobile</th>
                                 <th scope="col" style="width: 15%;">Verified?</th>
-                                <th scope="col" style="width: 10%;">Action</th>
+                                <th scope="col" style="width: 20%;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
+
                             <?php
                             $employeeList = mysqli_query($conn, "SELECT * FROM `registration` WHERE `preference`='employee'");
                             while ($row = mysqli_fetch_array($employeeList)) {
@@ -91,13 +90,19 @@ $clientcollapse = 1;
                                     "<tr>
                                         <th scope='row'>" . $row['id'] . "</th>
                                         <td>" . $row['username'] . "</td>
-                                        <td>" . $row['email'] . "</td>
+                                        <td>
+                                        <span class='badge bg-secondary'>" . $row['email'] . "</span>
+                                        </td>
+
                                         <td>" . $row['mobile'] . "</td>
+
                                         <td><span class='badge text-bg-" . ($row['verify_status'] == 0 ? "danger" : "success") . "'>" . ($row['verify_status'] == 0 ? "No" : "Yes") . "</span></td>
+
+                                    
                                         <td>
                                             <div class='d-flex'>
                                                 <input type='hidden' name='user_id' value='" . $row['id'] . "'>
-                                                    <button type='button' class='btn btn-outline-success me-3' onclick='openForm(" . $row['id'] . ")' name='edit'>Edit</button>
+                                                    <button type='button' class='btn btn-outline-primary me-3' onclick='openForm(" . $row['id'] . ")' name='edit'>Edit</button>
 
                                                     <button type='button' class='btn btn-outline-danger' onclick='openDelete(" . $row['id'] . ")' data-bs-toggle='modal' data-bs-target='#exampleModal'>
                                                         Delete
@@ -126,8 +131,8 @@ $clientcollapse = 1;
                         Are You Sure You Want To Delete?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" onclick="deleteID()">Yes</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-success" onclick="deleteID()">Yes</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>
             </div>
@@ -146,12 +151,12 @@ $clientcollapse = 1;
                         <div></div>
                         <div>
                             <div class="d-flex justify-content-center">
-                                <img src="" alt="profile" width="80" height="80" id="profilePic"
-                                    class="mt-2 rounded-circle">
+                                <img src="" alt="profile" width="90" height="90" id="profilePic"
+                                    class="mt-4 rounded-circle">
                             </div>
                         </div>
                         <div>
-                            <a onclick="closeForm()"><i class="pe-auto fa-solid fa-xmark m-3"></i></a>
+                            <a onclick="closeForm()"><i class="fa-solid fa-square-xmark m-3"></i></a>
                         </div>
                     </div>
 
@@ -176,7 +181,6 @@ $clientcollapse = 1;
                             <input type="text" class="form-control" id="employeefirstname" name="fname"
                                 value="<?php echo $row['firstname']; ?>">
                         </div>
-
                         <div class=" ms-5">
                             <p class="m-0 p-0">Last Name</p>
                             <input type="text" class="form-control" id="employeelastname" name="lname"
@@ -199,7 +203,7 @@ $clientcollapse = 1;
                     </div>
 
                     <div class="d-flex gap-3 mt-4 ">
-                        <div class="col-8 ms-5">
+                        <div class=" ms-5">
                             <p class="m-0 p-0">Email</p>
                             <input type="text" class="form-control" id="employeeemail" name="email"
                                 value="<?php echo $row['email']; ?>">
@@ -213,6 +217,7 @@ $clientcollapse = 1;
             </form>
         </div>
     </div>
+
 
     <!-- Bootstrap JS and DataTables JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
@@ -256,6 +261,7 @@ $clientcollapse = 1;
                 }
             });
 
+            //openForm Function
             let editForm = document.getElementById("editForm");
             let blur = document.getElementById("blur");
 
@@ -263,6 +269,8 @@ $clientcollapse = 1;
             editForm.classList.add("openForm");
         }
 
+
+        //closeForm Function
         function closeForm() {
             let editForm = document.getElementById("editForm");
             let blur = document.getElementById("blur");
@@ -271,6 +279,8 @@ $clientcollapse = 1;
             editForm.classList.remove("openForm");
         }
 
+
+        //deletion of user
         var deleterow;
         function openDelete(row) {
             deleterow = row;
@@ -278,7 +288,7 @@ $clientcollapse = 1;
         }
 
         function deleteID() {
-            window.location.href ="adminAction.php?deleteuserid=" + deleterow;
+            window.location.href = "adminAction.php?deleteuserid=" + deleterow;       //query parameter
         }
     </script>
 </body>
