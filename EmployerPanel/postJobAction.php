@@ -25,10 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result) {
         echo "Data inserted successfully!";
-<<<<<<< HEAD
-        echo "<script>location.href='../index.php'</script>";
-=======
->>>>>>> 185a9b425a1fc12526dfd4dd154e68086257f613
 
         $notificationAddQuery = "INSERT INTO `notification` (`COMPANYNAME`) VALUES ('$companyName')";
         $notificationAdd = mysqli_query($conn, $notificationAddQuery);

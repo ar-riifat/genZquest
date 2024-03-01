@@ -18,35 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userEmail = $_POST['email'];
 
 
-<<<<<<< HEAD
-    if (isset($_FILES["image"])) {
-        $imageName = $_FILES["image"]["name"];
-        $imageSize = $_FILES["image"]["size"];
-        $tmpName = $_FILES["image"]["tmp_name"];
-
-        $destination = 'pic/' . $imageName;
-
-        $extension = pathinfo($imageName, PATHINFO_EXTENSION);
-
-        if (!in_array($extension, ['jpg', 'jpeg', 'png'])) {
-            echo "File extension must be 'jpg', 'jpeg', 'png'";
-        } elseif ($imageSize > 1200000) { // File shouldn't be larger than 1 Megabyte
-            echo "File size too large!";
-        } else {
-            // Move the uploaded (temporary) file to the specified destination
-            if (move_uploaded_file($tmpName, $destination)) {
-                // Update the image column in the database
-                $updateImageSql = "UPDATE `registration` SET `image` = '$imageName' WHERE `email` = '$userEmail'";
-                mysqli_query($conn, $updateImageSql);
-                echo "<script>alert('Image updated successfully');</script>";
-            } else {
-                echo "<script>alert('Error moving uploaded file');</script>";
-            }
-        }
-    }
-
-=======
->>>>>>> 185a9b425a1fc12526dfd4dd154e68086257f613
     $update = mysqli_query($conn, "UPDATE `registration` SET `firstname`='$company', `byear`='$estd', `type`='$type', `website`='$website', `city`='$city', `street`='$street', `zip`='$zip', `country`='$country', `about`='$about', `service`='$service', `email`='$email', `mobile`='$mobile' WHERE `id` = '$id' ");
 
 

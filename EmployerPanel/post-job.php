@@ -139,10 +139,7 @@
         <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
         <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-<<<<<<< HEAD
-=======
-       
->>>>>>> 185a9b425a1fc12526dfd4dd154e68086257f613
+
 </body>
 
 </html>
