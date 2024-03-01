@@ -55,10 +55,13 @@ if ($result && $result->num_rows > 0) {
             <div>
                 <h2 class="container d-flex justify-content-center mb-5">Profile</h2>
             </div>
+<<<<<<< HEAD
                 <div>
                     
                 </div>
 
+=======
+>>>>>>> 185a9b425a1fc12526dfd4dd154e68086257f613
 
             <div class="form-group">
                 <label for="title">Company Name</label>
@@ -152,6 +155,10 @@ if ($result && $result->num_rows > 0) {
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<<<<<<< HEAD
 
+=======
+    <script>
+>>>>>>> 185a9b425a1fc12526dfd4dd154e68086257f613
 </body >
 </html >

@@ -18,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userEmail = $_POST['email'];
 
 
+<<<<<<< HEAD
     if (isset($_FILES["image"])) {
         $imageName = $_FILES["image"]["name"];
         $imageSize = $_FILES["image"]["size"];
@@ -44,6 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
+=======
+>>>>>>> 185a9b425a1fc12526dfd4dd154e68086257f613
     $update = mysqli_query($conn, "UPDATE `registration` SET `firstname`='$company', `byear`='$estd', `type`='$type', `website`='$website', `city`='$city', `street`='$street', `zip`='$zip', `country`='$country', `about`='$about', `service`='$service', `email`='$email', `mobile`='$mobile' WHERE `id` = '$id' ");
 
 
