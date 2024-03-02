@@ -65,6 +65,7 @@ include '../config.php';
                                 <th  scope="col" style="width: 15%;">Profile</th>
                                 <th scope="col" style="width: 10%;">Applicants</th>
                                 <th scope="col" style="width: 15%;">Mobile</th>
+                                <th scope="col" style="width: 15%;">Email</th>
                                 <th scope="col" style="width: 20%;">Job Title</th>
                                 <th scope="col" style="width: 15%;">Company </th>
                                 <th scope="col" style="width: 20%;">Applied Date</th>
@@ -87,6 +88,7 @@ include '../config.php';
                                     <td>
                                         <span class='badge bg-primary'>" . $row['contact'] . "</span>
                                     </td>
+                                    <td>" . $row['email'] . "</td>
                                     <td>" . $row['jobtitle'] . "</td>
                                     <td>
                                         <span class='badge bg-info'>" . $row['companyname'] . "</span>
@@ -98,12 +100,10 @@ include '../config.php';
                                     <td>
                                         <div class='d-flex'>
                                         
-                                            </form>
-                                            <form method='POST' action='delete.php'>
-                                                <input type='hidden' name='user_id' value='" . $row['id'] . "'>
-                                                <button type='button' class='btn btn-outline-danger'
-                                                    onclick='DeleteForm(" . $row['id'] . ")' name='delete'>Delete</button>
-                                            </form>
+                                        <a href='edit.php?id=" . $row['id'] . "'><button class='btn btn-outline-primary me-3'><i class='fa-solid fa-pen-to-square'></i></button></a>
+
+                                                
+                                        <button type='button' class='btn btn-outline-danger' onclick='openDelete(" . $row['id'] . ")' data-bs-toggle='modal' data-bs-target='#exampleModal'>Delete</button>
                                         </div>
                                     </td>
                                 </tr>";
@@ -114,6 +114,27 @@ include '../config.php';
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="exampleModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Confirmation</h1>
+                            <span id="id"></span>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are You Sure You Want To Delete?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" onclick="deleteID()">Yes</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
         <!-- Bootstrap JS and DataTables JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
@@ -128,12 +149,18 @@ include '../config.php';
                 $('#datatable').DataTable();
             });
 
-            // DeleteForm function (Assuming you have it defined)
-            function DeleteForm(id) {
-                // Implement your delete logic here
+            var deleterow;
+            function openDelete(row) {
+                deleterow = row;
+                console.log("1");
+                $("#id").text(row);
+            }
+
+            function deleteID() {
+                window.location.href = "applicantAction.php?deleteid=" + deleterow;
             }
         </script>
-    </div>
+    
 </body>
 
 </html>
