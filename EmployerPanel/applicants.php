@@ -7,8 +7,6 @@ if (!isset($_SESSION['username'])) {
 }
 
 include '../config.php';
-
-
 ?>
 
 <!DOCTYPE html>
@@ -37,9 +35,9 @@ include '../config.php';
             margin: 0 auto;
             padding: 30px;
             border: 1px solid rgba(255, 2, 0, 0, 0.1);
-            border-radius: 40px;
+            border-radius: 40px, rgba(055, 255, 0.3);
             background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 30px rgba(055, 255, 0.3);
+            box-shadow: 0 4px 30px ;
         }
 
        
@@ -57,15 +55,15 @@ include '../config.php';
         <div style="flex: 1;">
             <div class="d-flex row justify-content-center container-fluid">
                 <div class="border-secondary col-lg-12 col-md-12 col-sm-12 rounded m-4">
-                    <h4 class="mb-4">Applicants</h4>
+                    <h4 class="mb-4 fw-bold" style="color: #3498db;">Applicant Details</h4>
 
-                    <table class="container table table-striped" id="datatable">
+                    <table class="border container table table-striped" id="datatable">
                         <thead>
                             <tr>
+                            <th  scope="col" style="width: 15%;">ID</th>
                                 <th  scope="col" style="width: 15%;">Profile</th>
                                 <th scope="col" style="width: 10%;">Applicants</th>
                                 <th scope="col" style="width: 15%;">Mobile</th>
-                                <th scope="col" style="width: 15%;">Email</th>
                                 <th scope="col" style="width: 20%;">Job Title</th>
                                 <th scope="col" style="width: 15%;">Company </th>
                                 <th scope="col" style="width: 20%;">Applied Date</th>
@@ -78,7 +76,10 @@ include '../config.php';
                             <?php
                             $applicants = mysqli_query($conn, "SELECT * FROM `applicants`");
                             while ($row = mysqli_fetch_array($applicants)) {
-                                echo "<tr>
+                                echo "
+                         
+                                <tr>
+                                <td scope='row'>" . $row['id'] . "</td>
                                     <td>
                                         <div class='d-flex align-items-center'>
                                             <img src='" . $row['profile'] . "' alt='logo' style='width: 45px; height: 45px' class='rounded-circle'/>
@@ -88,7 +89,6 @@ include '../config.php';
                                     <td>
                                         <span class='badge bg-primary'>" . $row['contact'] . "</span>
                                     </td>
-                                    <td>" . $row['email'] . "</td>
                                     <td>" . $row['jobtitle'] . "</td>
                                     <td>
                                         <span class='badge bg-info'>" . $row['companyname'] . "</span>
@@ -98,12 +98,13 @@ include '../config.php';
                                     <td><span class='badge text-bg-" . ($row['status'] == 0 ? "warning" : "success") . "'>" . ($row['status'] == 0 ? "Pending" : "Approved") . "</span></td>
                                 
                                     <td>
-                                        <div class='d-flex'>
-                                        
-                                        <a href='edit.php?id=" . $row['id'] . "'><button class='btn btn-outline-primary me-3'><i class='fa-solid fa-pen-to-square'></i></button></a>
-
-                                                
-                                        <button type='button' class='btn btn-outline-danger' onclick='openDelete(" . $row['id'] . ")' data-bs-toggle='modal' data-bs-target='#exampleModal'>Delete</button>
+                                             <div class='d-flex'>
+                                        <form method='POST' action='delete.php'>
+                                            <input type='hidden' name='user_id' value='" . $row['id'] . "'>
+                                            <button type='button' class='btn btn-outline-danger' onclick='openDelete(" . $row['id'] . ")' data-bs-toggle='modal' data-bs-target='#exampleModal'>
+                                                Delete
+                                            </button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>";
@@ -115,26 +116,27 @@ include '../config.php';
             </div>
         </div>
 
-        <div class="modal fade" id="exampleModal">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Confirmation</h1>
-                            <span id="id"></span>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Are You Sure You Want To Delete?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-success" onclick="deleteID()">Yes</button>
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
-                        </div>
+
+  <!-- Delete Form -->
+  <div class="modal fade" id="exampleModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Confirmation</h1>
+                        <span id="id"></span>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are You Sure You Want To Delete?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" onclick="deleteID()">Yes</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
 
         <!-- Bootstrap JS and DataTables JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
@@ -144,23 +146,25 @@ include '../config.php';
         <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
         <script>
-            // DataTable
-            $(document).ready(function () {
-                $('#datatable').DataTable();
-            });
+     
+                 // DataTable initialization
+        $(document).ready(function () {
+            $('#datatable').DataTable();
+        });
 
-            var deleterow;
-            function openDelete(row) {
-                deleterow = row;
-                console.log("1");
-                $("#id").text(row);
-            }
+        var deleterow;
 
-            function deleteID() {
-                window.location.href = "applicantAction.php?deleteid=" + deleterow;
-            }
-        </script>
-    
+        function openDelete(row) {
+            deleterow = row;
+            console.log("1");
+            $("#id").text(row);
+        }
+
+        function deleteID() {
+            window.location.href = "applicantAction.php?deleteApplicant=" + deleterow;
+        }
+    </script>
+    </div>
 </body>
 
 </html>
